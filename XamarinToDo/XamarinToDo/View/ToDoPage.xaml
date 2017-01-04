@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinToDo.View.ToDoPage">
+  <ContentPage.Content>
+    <Grid RowSpacing="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <ActivityIndicator Grid.RowSpan="2"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         IsVisible="False"
+                         IsEnabled="True"
+                         x:Name="syncIndicator"/>
+      <StackLayout Grid.Row="0" BackgroundColor="#5ABAFF" Padding="10,30,10,5">
+        <Label TextColor="#555555" Text="Azure App Service" />
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Entry x:Name="newItemName"
+                    Placeholder="Item name" />
+          <StackLayout x:Name="buttonsPanel" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+            <Button Text="+"
+                    MinimumHeightRequest="30"
+                    Clicked="OnAdd" />
+          </StackLayout>
+        </Grid>
+      </StackLayout>
+      <ListView x:Name="todoList"
+          IsPullToRefreshEnabled="true" Refreshing="OnRefresh"
+          Grid.Row="1">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Padding="5,0,0,0">
+                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" />
+                <Button x:Name="removeItem" CommandParameter="{Binding .}" Text="✔" Clicked="OnComplete"/>
+              </StackLayout>
+
+              <!--<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Padding="15,5,0,0">
+                <StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Horizontal">
+                  <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" />
+                  <Button x:Name="removeItem" CommandParameter="{Binding .}" Text="✔" Clicked="OnComplete"/>
+                </StackLayout>
+              </StackLayout>-->
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>
+<!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <ContentPage.Content>
+    <StackLayout>
+      <Label Text="To do List" VerticalOptions="Center" HorizontalOptions="Center" />
+      <Entry x:Name="newItem" Placeholder="Nuevo item" />
+      <Button x:Name="addItem" Text="+" Clicked="AddItem" />
+      <Label Text="Red"/>
+      <Slider
+        Minimum="0"
+        Maximum="1"
+        x:Name="sliderRed"
+        ValueChanged="OnColorSlideChange"/>
+      <ListView x:Name="toDoList">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Horizontal">
+                  <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" />
+                  <Button x:Name="removeItem" CommandParameter="{Binding Id}" Text="X" Clicked="RemoveItem"/>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>-->

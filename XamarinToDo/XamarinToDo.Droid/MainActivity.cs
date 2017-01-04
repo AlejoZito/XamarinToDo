@@ -19,6 +19,9 @@ namespace XamarinToDo.Droid
 
             base.OnCreate(bundle);
 
+            // Initialize Azure Mobile Apps
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

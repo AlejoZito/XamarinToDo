@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using XamarinToDo.View;
 using Xamarin.Forms;
 
 namespace XamarinToDo
@@ -11,7 +11,13 @@ namespace XamarinToDo
     {
         public App()
         {
-            MainPage = new MainPage();
+
+            //MainPage en XAML
+            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new ToDoPage();
+
+            //MainPage en código c#
+            //MainPage = new MainContentPage();
         }
 
         protected override void OnStart()
@@ -28,5 +34,6 @@ namespace XamarinToDo
         {
             // Handle when your app resumes
         }
+        
     }
 }
